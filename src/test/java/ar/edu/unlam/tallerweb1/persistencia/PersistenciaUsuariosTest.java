@@ -1,10 +1,9 @@
 package ar.edu.unlam.tallerweb1.persistencia;
 
-import static org.junit.Assert.assertThat;
-
+import static org.assertj.core.api.Assertions.assertThat;
 import org.hibernate.Session;
-import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
@@ -13,12 +12,13 @@ public class PersistenciaUsuariosTest extends SpringTest
 {
 	
 	@Test
-	public void guardarUsuario()
+	@Transactional
+	public void CrearUsuario()
 	{
 	
 		Usuario seba = new Usuario();
 		
-		//seba.setId(1);
+		//seba.setId((long) 1);
 		seba.setEmail("admin@admin.com");
 		seba.setPassword("1234");
 		seba.setRol("admin");
@@ -29,11 +29,20 @@ public class PersistenciaUsuariosTest extends SpringTest
 
 		Usuario buscado = sesion.get(Usuario.class,seba.getId());
 		
-
-		Assert.assertThat(buscado).IsNotNull;
-		
+		assertThat(buscado).isNotNull();
 
 	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
 
