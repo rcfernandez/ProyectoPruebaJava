@@ -33,6 +33,30 @@ public class PersistenciaUsuariosTest extends SpringTest
 
 	}
 	
+	
+	@Test
+	@Transactional
+	public void insertarUsuario()
+	{
+	
+		Usuario messi = new Usuario();
+		
+		//seba.setId((long) 1);
+		messi.setEmail("messi@yahoo.com.ar");
+		messi.setPassword("1234");
+		messi.setRol("usuario");
+
+		Session sesion = getSession();
+		
+		sesion.save(messi);
+
+		Usuario buscado = sesion.get(Usuario.class,messi.getId());
+		
+		assertThat(buscado).isNotNull();
+
+	}
+	
+	
 
 	
 	

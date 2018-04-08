@@ -11,7 +11,8 @@ import static org.assertj.core.api.Assertions.*;
 public class ConexionBaseDeDatosTest extends SpringTest{
 
     @Test
-    @Transactional @Rollback(true)
+    @Transactional 
+    @Rollback(true)
     public void pruebaConexion(){
         assertThat(getSession().isConnected()).isTrue();
     }
